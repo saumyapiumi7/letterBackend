@@ -1,24 +1,20 @@
-# Dockerfile for Node.js App
+# Use official Node.js image
+FROM node:20
 
-FROM node:16
-
-# Set environment to production
-ENV NODE_ENV=production
-
-# Set the working directory in the container
+# Set working directory
 WORKDIR /app
 
-# Copy the package.json and package-lock.json files into the container
-COPY ["package.json", "package-lock.json*", "./"]
+# Copy package.json and package-lock.json
+COPY package*.json ./
 
-# Install the dependencies
-RUN npm install --production
+# Install dependencies
+RUN npm install
 
-# Copy the entire project into the container
+# Copy the rest of the application code
 COPY . .
 
-# Expose port 8080 for the application
-EXPOSE 8080
+# Expose the port
+EXPOSE 3000
 
-# Set the command to run the application
-CMD [ "node", "index.js" ]
+# Command to start the server
+CMD ["npm", "start"]
