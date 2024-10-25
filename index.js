@@ -1,11 +1,18 @@
 const express = require('express');
 const connectDB = require('./config/db.js'); // Ensure this path is correct
+const tripRoutes = require('./routes/trips.js'); // Adjust the path as necessary
 
 const app = express(); // Define your Express app
 const PORT = process.env.PORT || 5000;
 
-// Middleware and routes can be set up here
-// app.use(...);
+// Middleware to parse JSON bodies
+app.use(express.json());
+
+const cors = require('cors');
+app.use(cors());
+
+// Use trip routes
+app.use('/api/trips', tripRoutes);
 
 // Connect to Database and Start Server
 connectDB()
