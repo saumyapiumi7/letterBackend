@@ -2,7 +2,7 @@
 FROM node:20
 
 # Set working directory
-WORKDIR /app  # It's a good practice to set a specific folder for your app
+WORKDIR /app
 
 # Copy package.json and package-lock.json
 COPY package*.json ./
@@ -17,4 +17,4 @@ COPY . .
 EXPOSE 3000
 
 # Command to start the server
-CMD ["node", "server.js"]
+CMD ["node", "index.js"]
