@@ -2,7 +2,7 @@
 FROM node:20
 
 # Set working directory
-WORKDIR /app
+WORKDIR /app  # It's a good practice to set a specific folder for your app
 
 # Copy package.json and package-lock.json
 COPY package*.json ./
