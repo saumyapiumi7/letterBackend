@@ -26,13 +26,14 @@ const ObjectModel = mongoose.model('Object', ObjectSchema);
 
 // POST endpoint to receive data from Arduino
 app.post('/api/data', (req, res) => {
-  const { count } = req.body; // Expecting count in the request body
+  const { count } = req.body; // Ensure count is correctly extracted from the body
   const objectData = new ObjectModel({ count });
   
   objectData.save()
     .then(() => res.status(201).send('Data saved'))
     .catch(err => res.status(400).send(err));
 });
+
 
 // GET endpoint to retrieve data
 app.get('/api/data', (req, res) => {
